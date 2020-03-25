@@ -1,0 +1,17 @@
+@{
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+@{
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<section class="posts">
+    @foreach (var post in Model)
+    {
+        <div class="post">
+            <h2>@post.Title</h2>
+            <p>@post.Excerpt</p>
+            <a href="/post/@post.Title.Replace(' ', '-')">read more</a> 
+        </div>   
+    }
+</section>
