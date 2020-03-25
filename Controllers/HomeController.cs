@@ -9,7 +9,8 @@ using Blog.Models;
 namespace Blog.Controllers {
     
     [Route("/")]
-    public class HomeController : Controller{
+    public class HomeController : Controller
+    {
 
         private readonly IMongoCollection<Post> _posts;
 
