@@ -38,7 +38,7 @@ namespace Blog
             services.Configure<BlogPostsDatabaseSettings>(
                 Configuration.GetSection(nameof(BlogPostsDatabaseSettings))
             );
-
+            
             services.AddSingleton<IBlogPostsDatabaseSettings>(sp => sp.GetRequiredService<IOptions<BlogPostsDatabaseSettings>>().Value);
 
             services.AddMvc(o => o.EnableEndpointRouting = false);
@@ -53,7 +53,7 @@ namespace Blog
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseMvc(routes => {
                 routes.MapRoute(

@@ -1,5 +1,5 @@
 @{
-    Layout="~/Views/Shared/_adminLayout.cshtml";   
+    Layout="_adminLayout";   
 }
 
 <style>
@@ -24,7 +24,7 @@
     }
 </style>
 
-<a href="/admim/new/post"><button class="new-post">New</button></a>
+<a asp-action="NewPost"><button class="new-post">New</button></a>
 <div class="table">
     @foreach (var post in Model){
     <div class="row">

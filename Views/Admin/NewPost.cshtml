@@ -1,0 +1,41 @@
+@model Post
+
+@{
+    Layout="_adminLayout";
+}
+
+<h1>New Post</h1>
+
+<form asp-action="NewPost" method="post">
+    <div asp-validation-summary="All"></div>
+
+    <div>
+        <label asp-for="Title"></label>
+        <input asp-for="Title" />
+    </div>
+
+    <div>
+        <label asp-for="Excerpt"></label>
+        <input asp-for="Excerpt" />
+    </div>
+
+    <div>
+        <label asp-for="Content"></label>
+        <input asp-for="Content" />
+    </div>
+
+    <div>
+        <label asp-for="Created"></label>
+        <input asp-for="Created" type="datetime" />
+    </div>
+
+    <div>
+        <label asp-for="Public"></label>
+        <input asp-for="Public" type="checkbox" checked="checked" />
+    </div>
+
+    <div>
+        <input type="submit" value="Create Post" />
+    </div>
+
+</form>

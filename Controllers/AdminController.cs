@@ -32,12 +32,12 @@ namespace Blog.Controllers
         }
 
         [HttpPost, Route("new/post")]
-        public IActionResult NewPost([FromBody]Post post)
+        public IActionResult NewPost([FromForm]Post post)
         {
             _posts.InsertOne(post);
 
-            if(_posts.Find(p => p.Title.Equals(post.Title)).Any())
-                return StatusCode(201);
+            if (_posts.Find(p => p.Title.Equals(post.Title)).Any())
+                return RedirectToAction("Index");
 
             return StatusCode(400);
         }
