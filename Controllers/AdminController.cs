@@ -43,13 +43,14 @@ namespace Blog.Controllers
         }
 
         [HttpDelete, Route("post/delete")]
-        public IActionResult DeletePost([FromBody]string postTitle)
+        public IActionResult DeletePost(string postTitle)
         {
             if(_posts.DeleteOne(p => p.Title.Equals(postTitle)).IsAcknowledged)
                 return StatusCode(200);
 
             return StatusCode(400);
         }
+
 
         [HttpPut, Route("post/update")]
         public IActionResult UpdatePost([FromBody]Post newPost, [FromBody]string postTitle)
