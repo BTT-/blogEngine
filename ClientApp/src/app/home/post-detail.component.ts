@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PostsService } from './posts.service';
+import { IPost } from './post';
 
 @Component({
   selector: 'app-post-detail',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostDetailComponent implements OnInit {
 
-  constructor() { }
+  post: IPost;
+
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private postsService: PostsService) { }
 
   ngOnInit() {
+    let id = this.route.snapshot.paramMap.get('id');
+    this.postsService.getPost(id).toPromise().then(p => this.post = p);
+  }
+
+  onBack(): void {
+    this.router.navigate(['']);
   }
 
 }

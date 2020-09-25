@@ -19,6 +19,13 @@ export class PostsService {
       catchError(this.handleError));
   }
 
+  getPost(title: string): Observable<IPost> {
+    return this.http.get<IPost>(this.posturl + '/' + encodeURIComponent(title)).pipe(
+      tap(data => console.log(title + ': ' + JSON.stringify(data))),
+      catchError(this.handleError));
+  }
+
+
   private handleError(err: HttpErrorResponse) {
     let errorMessage = '';
     if (err.error instanceof ErrorEvent) {

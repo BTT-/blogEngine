@@ -4,6 +4,7 @@ using MongoDB.Driver;
 using Blog.Models;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Web;
 
 namespace Blog.Controllers
 {
@@ -34,7 +35,8 @@ namespace Blog.Controllers
         [Route("{postTitle}")]
         public IActionResult Index([FromRoute] string postTitle)
         {
-            return Ok(_posts.Find<Post>(p => p.Title.Equals(postTitle.Replace('-', ' '))).FirstOrDefault());
+            var decodedTitle = HttpUtility.UrlDecode(postTitle);
+            return Ok(_posts.Find<Post>(p => p.Title.Equals(decodedTitle)).FirstOrDefault());
         }
 
         private async Task CreateSamplePosts()
