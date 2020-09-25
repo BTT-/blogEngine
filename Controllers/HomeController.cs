@@ -7,9 +7,9 @@ using MongoDB.Driver;
 using Blog.Models;
 
 namespace Blog.Controllers {
-    
-    [Route("/")]
-    public class HomeController : Controller
+    [ApiController]
+    [Route("[Controller]")]
+    public class HomeController : ControllerBase
     {
 
         private readonly IMongoCollection<Post> _posts;
@@ -25,7 +25,7 @@ namespace Blog.Controllers {
         public async Task<IActionResult> Index()
         {
             await CreateSamplePosts();
-            return View(_posts.Find<Post>(p => p.Public && 
+            return Ok(_posts.Find<Post>(p => p.Public && 
                                           p.Created <= DateTime.Now && 
                                           p.Deleted == false).ToList());
         }
@@ -85,7 +85,8 @@ namespace Blog.Controllers {
                                 "![surprise](https://media.giphy.com/media/fdyZ3qI0GVZC0/giphy.gif)"
                 }
             };
-            if(await _posts.CountAsync( p => true) == 0)
+            
+            if(await _posts.CountDocumentsAsync( p => true) == 0)
                 await _posts.InsertManyAsync(postList);
         }
 

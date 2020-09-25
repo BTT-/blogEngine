@@ -6,7 +6,8 @@ using MongoDB.Driver;
 
 namespace Blog.Controllers
 {
-    [Route("/admin")]
+    
+    [Route("[Controller]")]
     public class AdminController: Controller
     {
 
