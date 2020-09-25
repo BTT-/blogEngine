@@ -11,6 +11,7 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { PostDetailComponent } from './home/post-detail.component';
 import { AdminComponent } from './admin/admin.component';
+import { NewPostComponent } from './new-post/new-post.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AdminComponent } from './admin/admin.component';
     CounterComponent,
     FetchDataComponent,
     PostDetailComponent,
-    AdminComponent
+    AdminComponent,
+    NewPostComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -30,6 +32,7 @@ import { AdminComponent } from './admin/admin.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'post/:id', component: PostDetailComponent },
       { path: 'admin', component: AdminComponent },
+      { path: 'admin/new', component: NewPostComponent },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
     ])
