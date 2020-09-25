@@ -6,8 +6,8 @@ using MongoDB.Driver;
 
 namespace Blog.Controllers
 {
-    
-    [Route("[Controller]")]
+    [ApiController]
+    [Route("api/[Controller]")]
     public class AdminController: Controller
     {
 
@@ -53,8 +53,8 @@ namespace Blog.Controllers
         }
 
 
-        [HttpPut, Route("post/update")]
-        public IActionResult UpdatePost([FromBody]Post newPost, [FromBody]string postTitle)
+        [HttpPut, Route("post/update/{postTitle}")]
+        public IActionResult UpdatePost([FromBody]Post newPost, [FromRoute]string postTitle)
         {
             if(_posts.ReplaceOne(p => p.Title.Equals(postTitle), newPost).IsAcknowledged)
                 return StatusCode(200);

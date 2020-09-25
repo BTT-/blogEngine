@@ -29,6 +29,7 @@ import { AdminComponent } from './admin/admin.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'post/:id', component: PostDetailComponent },
+      { path: 'admin', component: AdminComponent },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
     ])
